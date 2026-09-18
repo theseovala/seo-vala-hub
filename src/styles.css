@@ -2845,3 +2845,176 @@ select {
     transition-duration: .001ms !important;
   }
 }
+
+/* Responsive performance and interaction authority — shared across every route. */
+html {
+  overflow-x: clip;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  min-width: 20rem;
+  overflow-x: clip;
+  letter-spacing: 0;
+}
+
+h1, h2, h3, h4,
+.page-title,
+.stat-tile-value,
+.reference-copy h1,
+.reference-contact-copy h2,
+.reference-about-copy h2,
+.reference-about-card h3,
+.reference-platforms-copy h2,
+.reference-promise-left h2,
+.reference-press-track span {
+  letter-spacing: 0;
+}
+
+:where(button, a, input, select, textarea, summary) {
+  touch-action: manipulation;
+}
+
+:where(input, select, textarea) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+:where(img, svg, video, canvas) {
+  max-width: 100%;
+}
+
+.reference-page,
+.page-main,
+.app-main,
+.auth-shell {
+  animation: route-enter .42s var(--ease-premium) both;
+}
+
+@keyframes route-enter {
+  from { opacity: 0; transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+.app-main {
+  margin-inline: auto;
+}
+
+.app-page-content,
+.app-card,
+.app-data-card,
+.surface,
+[data-ui="card"] {
+  min-width: 0;
+}
+
+[data-ui="table"] {
+  min-width: 42rem;
+}
+
+[data-ui="table"] :where(th, td) {
+  white-space: nowrap;
+}
+
+[data-ui="table"] :where(th, td):first-child {
+  padding-left: 1rem;
+}
+
+[data-ui="table"] :where(th, td):last-child {
+  padding-right: 1rem;
+}
+
+.reference-about-card,
+.reference-contact-card,
+.reference-platforms-grid article,
+.reference-features article,
+.three-step-card {
+  transform: translateZ(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reference-about-card:hover,
+  .reference-contact-card:hover,
+  .reference-platforms-grid article:hover,
+  .reference-features article:hover,
+  .surface-hover:hover {
+    will-change: transform;
+  }
+}
+
+@media (pointer: coarse) {
+  :where(button, a, summary, input, select) {
+    min-height: 2.75rem;
+  }
+
+  .rw-icon-btn,
+  .rw-burger,
+  .app-mobilebar-toggle {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --layout-gutter: 1rem;
+    --card-pad: 1rem;
+  }
+
+  .rw-header-inner {
+    width: calc(100% - 1.5rem);
+    gap: .5rem;
+  }
+
+  .rw-actions { gap: .4rem; }
+  .rw-actions > .rw-cta { display: none; }
+  .rw-burger { display: grid; }
+  .rw-mobile { max-height: calc(100dvh - 4.125rem); overflow-y: auto; overscroll-behavior: contain; }
+  .reference-copy h1 { overflow-wrap: anywhere; }
+  .reference-about,
+  .reference-contact { padding-inline: 1rem; }
+  .reference-contact-form { padding-inline: 1rem; }
+  .reference-platforms-grid { grid-template-columns: 1fr; }
+  .rating-score { align-items: flex-end; gap: .625rem; }
+  .rating-score strong { font-size: 3.65rem; }
+  .rating-score > span { font-size: 1.35rem; }
+  .app-stats-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .reference-page .reference-hero { padding-block: 2.75rem 3.5rem; }
+  .reference-proof { min-height: 430px; }
+  .reference-contact-form-foot > button { width: 100%; }
+  .page-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .app-main { padding-inline: 1rem; }
+  [data-ui="table"] { min-width: 38rem; }
+}
+
+@media (min-width: 1440px) {
+  .app-main { max-width: 1320px; }
+}
+
+@media (min-width: 1800px) {
+  .app-layout { grid-template-columns: 280px minmax(0, 1fr); }
+  .app-main { max-width: 1500px; }
+  .reference-page .reference-hero { min-height: 700px; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .rw-header,
+  .rw-menu,
+  .rw-mobile,
+  .app-mobilebar,
+  .surface,
+  [data-ui="card"] {
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reference-page,
+  .page-main,
+  .app-main,
+  .auth-shell { animation: none; }
+}

@@ -503,7 +503,7 @@ export function ReferenceLanding({
 
         <section className="reference-section reference-features-section">
           <h2>Built for reputation teams</h2>
-          <div className="reference-features">{features.map((feature, index) => <article key={feature.title}><img src={feature.icon} alt="" style={{ animationDelay: `${index * 310}ms` }} /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}</div>
+          <div className="reference-features">{features.map((feature, index) => <article key={feature.title}><img src={feature.icon} alt="" loading="lazy" decoding="async" style={{ animationDelay: `${index * 310}ms` }} /><h3>{feature.title}</h3><p>{feature.body}</p></article>)}</div>
         </section>
 
         <section className="audit-finale" aria-labelledby="audit-finale-title">
@@ -591,7 +591,7 @@ export function ReferenceLanding({
             <button type="button" onClick={() => setChatOpen(false)} aria-label="Dismiss"><X className="size-4" /></button>
           </div>
           <button type="button" onClick={openScanner} className="reference-chat-avatar" aria-label="Start a review audit">
-            <img src={chatAvatar} alt="Review audit assistant" width={54} height={54} loading="lazy" className="reference-chat-avatar-img" />
+            <img src={chatAvatar} alt="Review audit assistant" width={54} height={54} loading="lazy" decoding="async" className="reference-chat-avatar-img" />
           </button>
         </div>
       ) : null}
