@@ -158,7 +158,7 @@ function LocationsPage() {
                 </div>
               ) : null}
 
-              <dl className="mt-auto grid grid-cols-3 gap-2 pt-5 text-center">
+              <dl className="mt-auto grid grid-cols-1 gap-2 pt-5 text-center min-[420px]:grid-cols-3">
                 <StatTile compact label="Checked" value={location.caseCount} />
                 <StatTile compact label="Reported" value={location.reportedCount} />
                 <StatTile compact label="Removed" value={location.removedCount} tone="text-safe" />

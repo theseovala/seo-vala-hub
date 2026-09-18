@@ -4,7 +4,12 @@ import { cn } from "@/lib/utils";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className="relative w-full overflow-auto">
+    <div
+      className="relative w-full overflow-auto rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+      role="region"
+      aria-label="Scrollable data table"
+      tabIndex={0}
+    >
       <table
         ref={ref}
         data-ui="table"

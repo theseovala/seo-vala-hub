@@ -323,7 +323,7 @@ function Home() {
                   </div>
                 ) : (
                   <>
-                    <div className="flex items-center justify-between gap-3">
+                    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
                       <h2 className="text-lg font-semibold text-ink">
                         Pick the review you want checked
                       </h2>
@@ -340,13 +340,13 @@ function Home() {
                           className="surface surface-hover animate-rise group w-full p-4 text-left sm:p-5"
                           style={{ animationDelay: `${index * 60}ms` }}
                         >
-                          <div className="flex items-center justify-between gap-3">
-                            <div className="flex items-center gap-3">
+                          <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+                            <div className="flex min-w-0 items-center gap-3">
                               <span className="flex size-9 items-center justify-center rounded-full bg-muted text-sm font-semibold text-ink">
                                 {item.authorName.charAt(0)}
                               </span>
-                              <div>
-                                <p className="text-sm font-semibold text-ink">{item.authorName}</p>
+                              <div className="min-w-0">
+                                <p className="truncate text-sm font-semibold text-ink">{item.authorName}</p>
                                 <p className="text-xs text-muted-foreground">{item.relativeTime}</p>
                               </div>
                             </div>
@@ -406,15 +406,15 @@ function Home() {
 
 function BusinessHeader({ business, onReset }: { business: BusinessInfo; onReset: () => void }) {
   return (
-    <div className="surface flex flex-wrap items-start justify-between gap-4 p-5">
-      <div className="flex items-start gap-3">
-        <BrandMark className="size-10" />
-        <div>
-          <h2 className="font-display text-xl font-semibold text-ink">{business.name}</h2>
+    <div className="surface grid grid-cols-[minmax(0,1fr)_auto] items-start gap-4 p-5 max-sm:grid-cols-1">
+      <div className="flex min-w-0 items-start gap-3">
+        <BrandMark className="size-10 shrink-0" />
+        <div className="min-w-0">
+          <h2 className="break-words font-display text-xl font-semibold text-ink">{business.name}</h2>
           {business.address ? (
-            <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin className="size-3.5" />
-              {business.address}
+            <p className="mt-1 flex min-w-0 items-start gap-1.5 text-sm text-muted-foreground">
+              <MapPin className="mt-0.5 size-3.5 shrink-0" />
+              <span className="break-words">{business.address}</span>
             </p>
           ) : null}
           {business.rating ? (
@@ -427,7 +427,7 @@ function BusinessHeader({ business, onReset }: { business: BusinessInfo; onReset
           ) : null}
         </div>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex shrink-0 flex-wrap items-center gap-3 max-sm:w-full max-sm:justify-between">
         <a
           href={business.mapsUri}
           target="_blank"
@@ -453,13 +453,13 @@ function BusinessHeader({ business, onReset }: { business: BusinessInfo; onReset
 function ReviewHero({ review }: { review: ReviewInfo }) {
   return (
     <div className="surface animate-rise p-5 sm:p-6">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <span className="flex size-10 items-center justify-center rounded-full bg-muted text-sm font-semibold text-ink">
             {review.authorName.charAt(0)}
           </span>
-          <div>
-            <p className="font-semibold text-ink">{review.authorName}</p>
+          <div className="min-w-0">
+            <p className="truncate font-semibold text-ink">{review.authorName}</p>
             <p className="text-xs text-muted-foreground">{review.relativeTime}</p>
           </div>
         </div>
@@ -538,7 +538,7 @@ const WORKFLOW = [
 function Workflow() {
   return (
     <div className="relative z-10 -mt-16 px-1 sm:-mt-20 sm:px-6 lg:px-10">
-      <ol className="workflow-ribbon mx-auto grid max-w-5xl grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
+      <ol className="workflow-ribbon mx-auto grid max-w-5xl grid-cols-3 gap-2 md:grid-cols-4 md:gap-3 lg:grid-cols-6">
         {WORKFLOW.map((step, index) => (
           <li
             key={step.label}
@@ -551,7 +551,7 @@ function Workflow() {
               <step.icon className="size-4" />
             </span>
             <p className="mt-3 text-sm font-semibold text-ink">{step.label}</p>
-            <p className="mt-1 hidden text-[11px] leading-relaxed text-muted-foreground sm:block">{step.body}</p>
+            <p className="mt-1 hidden text-[11px] leading-relaxed text-muted-foreground md:block">{step.body}</p>
           </li>
         ))}
       </ol>

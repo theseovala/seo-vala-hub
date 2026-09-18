@@ -98,15 +98,17 @@ export function AppShell({
         <Link to="/">
           <Wordmark />
         </Link>
-        <button
+        <Button
           type="button"
+          variant="outline"
+          size="icon"
           className="app-mobilebar-toggle"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        </Button>
       </header>
 
       <div className="app-layout">
@@ -116,8 +118,9 @@ export function AppShell({
         {/* Mobile drawer */}
         {open ? (
           <>
-            <button
+            <Button
               type="button"
+              variant="ghost"
               aria-label="Close menu"
               className="app-sidebar-backdrop lg:hidden"
               onClick={() => setOpen(false)}
