@@ -70,12 +70,14 @@ export async function sendTemplateEmail(
       ? template.subject(templateData)
       : template.subject
 
+  const { senderDomain, fromDomain } = getEmailDomains()
+
   try {
     await sendLovableEmail(
       {
         to: recipient,
-        from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-        sender_domain: SENDER_DOMAIN,
+        from: `${SITE_NAME} <noreply@${fromDomain}>`,
+        sender_domain: senderDomain,
         subject,
         html,
         text,
