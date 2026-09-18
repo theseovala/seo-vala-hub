@@ -206,6 +206,7 @@ export function SiteHeader({
             onClick={() => setMobileOpen((value) => !value)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -213,7 +214,7 @@ export function SiteHeader({
       </div>
 
       {mobileOpen ? (
-        <div className="rw-mobile">
+        <nav id="mobile-navigation" className="rw-mobile" aria-label="Mobile navigation">
           <button type="button" onClick={scan}>Scan Review</button>
           <Link to="/dashboard" onClick={() => setMobileOpen(false)}>Reviews</Link>
           <Link to="/reports" onClick={() => setMobileOpen(false)}>Reports</Link>
@@ -225,7 +226,7 @@ export function SiteHeader({
           <button type="button" className="rw-cta rw-cta-block" onClick={scan}>
             Scan a Review <ArrowRight className="size-4" />
           </button>
-        </div>
+        </nav>
       ) : null}
     </header>
   );
@@ -266,6 +267,7 @@ function MenuTrigger({
         className={`rw-nav-link ${isOpen ? "is-open" : ""}`}
         aria-expanded={isOpen}
         aria-haspopup="true"
+        aria-controls={`menu-${id}`}
         onPointerDown={(event) => {
           // Mouse users already opened the menu on hover; a click must not close it again.
           if (event.pointerType === "mouse") onOpen(id);
@@ -277,7 +279,7 @@ function MenuTrigger({
       >
         {label} <ChevronDown className="size-3.5" />
       </button>
-      {isOpen ? <div className={`rw-menu ${wide ? "rw-menu-wide" : ""}`}>{children}</div> : null}
+      {isOpen ? <div id={`menu-${id}`} className={`rw-menu ${wide ? "rw-menu-wide" : ""}`}>{children}</div> : null}
     </div>
   );
 }

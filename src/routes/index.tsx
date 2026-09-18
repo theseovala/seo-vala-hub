@@ -538,7 +538,7 @@ const WORKFLOW = [
 function Workflow() {
   return (
     <div className="relative z-10 -mt-16 px-1 sm:-mt-20 sm:px-6 lg:px-10">
-      <ol className="workflow-ribbon mx-auto grid max-w-5xl grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
+      <ol className="workflow-ribbon mx-auto grid max-w-5xl grid-cols-3 gap-2 md:grid-cols-4 md:gap-3 lg:grid-cols-6">
         {WORKFLOW.map((step, index) => (
           <li
             key={step.label}
@@ -551,7 +551,7 @@ function Workflow() {
               <step.icon className="size-4" />
             </span>
             <p className="mt-3 text-sm font-semibold text-ink">{step.label}</p>
-            <p className="mt-1 hidden text-[11px] leading-relaxed text-muted-foreground sm:block">{step.body}</p>
+            <p className="mt-1 hidden text-[11px] leading-relaxed text-muted-foreground md:block">{step.body}</p>
           </li>
         ))}
       </ol>

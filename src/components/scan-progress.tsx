@@ -13,9 +13,10 @@ export function ScanProgress({ steps, done }: { steps: string[]; done: boolean }
   }, [done, steps.length]);
 
   return (
-    <div className="surface app-card mx-auto w-full max-w-xl">
+    <div className="surface app-card mx-auto w-full max-w-xl" role="status" aria-live="polite" aria-busy={!done}>
+      <span className="sr-only">{done ? "Analysis complete" : steps[active]}</span>
       <div className="relative mb-5 h-1 overflow-hidden rounded-full bg-muted">
-        <span className="absolute inset-y-0 w-1/3 animate-[sweep_1.8s_cubic-bezier(0.4,0,0.2,1)_infinite] rounded-full bg-primary" />
+        <span className="absolute inset-y-0 w-1/3 animate-[sweep_1.8s_cubic-bezier(0.4,0,0.2,1)_infinite] rounded-full bg-primary motion-reduce:animate-none" />
       </div>
       <ul className="space-y-3">
         {steps.map((step, index) => {
@@ -40,7 +41,7 @@ export function ScanProgress({ steps, done }: { steps: string[]; done: boolean }
                 {complete ? (
                   <Check className="size-3.5" strokeWidth={3} />
                 ) : current ? (
-                  <Loader2 className="size-3.5 animate-spin" />
+                  <Loader2 className="size-3.5 animate-spin motion-reduce:animate-none" />
                 ) : (
                   <span className="size-1.5 rounded-full bg-current" />
                 )}
