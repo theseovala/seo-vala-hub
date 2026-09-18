@@ -10,33 +10,260 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as AuthenticatedBlogManagerRouteImport } from './routes/_authenticated/blog-manager'
+import { Route as AuthenticatedBulkRouteImport } from './routes/_authenticated/bulk'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedLocationsRouteImport } from './routes/_authenticated/locations'
+import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticated/messages'
+import { Route as AuthenticatedPipelineRouteImport } from './routes/_authenticated/pipeline'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
+import { Route as AuthenticatedScansRouteImport } from './routes/_authenticated/scans'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as ScanIndexRouteImport } from './routes/scan.index'
+import { Route as ScanSlugRouteImport } from './routes/scan.$slug'
+import { Route as ApiPublicGoogleBusinessCallbackRouteImport } from './routes/api/public/google-business/callback'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedBlogManagerRoute =
+  AuthenticatedBlogManagerRouteImport.update({
+    id: '/blog-manager',
+    path: '/blog-manager',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBulkRoute = AuthenticatedBulkRouteImport.update({
+  id: '/bulk',
+  path: '/bulk',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedLocationsRoute = AuthenticatedLocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMessagesRoute = AuthenticatedMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPipelineRoute = AuthenticatedPipelineRouteImport.update({
+  id: '/pipeline',
+  path: '/pipeline',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedScansRoute = AuthenticatedScansRouteImport.update({
+  id: '/scans',
+  path: '/scans',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
+const ScanIndexRoute = ScanIndexRouteImport.update({
+  id: '/scan/',
+  path: '/scan/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScanSlugRoute = ScanSlugRouteImport.update({
+  id: '/scan/$slug',
+  path: '/scan/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicGoogleBusinessCallbackRoute =
+  ApiPublicGoogleBusinessCallbackRouteImport.update({
+    id: '/api/public/google-business/callback',
+    path: '/api/public/google-business/callback',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/blog-manager': typeof AuthenticatedBlogManagerRoute
+  '/bulk': typeof AuthenticatedBulkRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/locations': typeof AuthenticatedLocationsRoute
+  '/messages': typeof AuthenticatedMessagesRoute
+  '/pipeline': typeof AuthenticatedPipelineRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/scans': typeof AuthenticatedScansRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/scan/$slug': typeof ScanSlugRoute
+  '/scan/': typeof ScanIndexRoute
+  '/api/public/google-business/callback': typeof ApiPublicGoogleBusinessCallbackRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/blog-manager': typeof AuthenticatedBlogManagerRoute
+  '/bulk': typeof AuthenticatedBulkRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/locations': typeof AuthenticatedLocationsRoute
+  '/messages': typeof AuthenticatedMessagesRoute
+  '/pipeline': typeof AuthenticatedPipelineRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/scans': typeof AuthenticatedScansRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/scan/$slug': typeof ScanSlugRoute
+  '/scan': typeof ScanIndexRoute
+  '/api/public/google-business/callback': typeof ApiPublicGoogleBusinessCallbackRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/reset-password': typeof ResetPasswordRoute
+  '/services': typeof ServicesRoute
+  '/_authenticated/blog-manager': typeof AuthenticatedBlogManagerRoute
+  '/_authenticated/bulk': typeof AuthenticatedBulkRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/locations': typeof AuthenticatedLocationsRoute
+  '/_authenticated/messages': typeof AuthenticatedMessagesRoute
+  '/_authenticated/pipeline': typeof AuthenticatedPipelineRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/scans': typeof AuthenticatedScansRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/scan/$slug': typeof ScanSlugRoute
+  '/scan/': typeof ScanIndexRoute
+  '/api/public/google-business/callback': typeof ApiPublicGoogleBusinessCallbackRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/blog'
+    | '/reset-password'
+    | '/services'
+    | '/blog-manager'
+    | '/bulk'
+    | '/dashboard'
+    | '/locations'
+    | '/messages'
+    | '/pipeline'
+    | '/reports'
+    | '/scans'
+    | '/blog/$slug'
+    | '/scan/$slug'
+    | '/scan/'
+    | '/api/public/google-business/callback'
+    | '/lovable/email/transactional/preview'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/blog'
+    | '/reset-password'
+    | '/services'
+    | '/blog-manager'
+    | '/bulk'
+    | '/dashboard'
+    | '/locations'
+    | '/messages'
+    | '/pipeline'
+    | '/reports'
+    | '/scans'
+    | '/blog/$slug'
+    | '/scan/$slug'
+    | '/scan'
+    | '/api/public/google-business/callback'
+    | '/lovable/email/transactional/preview'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/blog'
+    | '/reset-password'
+    | '/services'
+    | '/_authenticated/blog-manager'
+    | '/_authenticated/bulk'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/locations'
+    | '/_authenticated/messages'
+    | '/_authenticated/pipeline'
+    | '/_authenticated/reports'
+    | '/_authenticated/scans'
+    | '/blog/$slug'
+    | '/scan/$slug'
+    | '/scan/'
+    | '/api/public/google-business/callback'
+    | '/lovable/email/transactional/preview'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  ServicesRoute: typeof ServicesRoute
+  ScanSlugRoute: typeof ScanSlugRoute
+  ScanIndexRoute: typeof ScanIndexRoute
+  ApiPublicGoogleBusinessCallbackRoute: typeof ApiPublicGoogleBusinessCallbackRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +275,181 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/blog-manager': {
+      id: '/_authenticated/blog-manager'
+      path: '/blog-manager'
+      fullPath: '/blog-manager'
+      preLoaderRoute: typeof AuthenticatedBlogManagerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/bulk': {
+      id: '/_authenticated/bulk'
+      path: '/bulk'
+      fullPath: '/bulk'
+      preLoaderRoute: typeof AuthenticatedBulkRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/locations': {
+      id: '/_authenticated/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof AuthenticatedLocationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/messages': {
+      id: '/_authenticated/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof AuthenticatedMessagesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/pipeline': {
+      id: '/_authenticated/pipeline'
+      path: '/pipeline'
+      fullPath: '/pipeline'
+      preLoaderRoute: typeof AuthenticatedPipelineRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/scans': {
+      id: '/_authenticated/scans'
+      path: '/scans'
+      fullPath: '/scans'
+      preLoaderRoute: typeof AuthenticatedScansRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/scan/': {
+      id: '/scan/'
+      path: '/scan'
+      fullPath: '/scan/'
+      preLoaderRoute: typeof ScanIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scan/$slug': {
+      id: '/scan/$slug'
+      path: '/scan/$slug'
+      fullPath: '/scan/$slug'
+      preLoaderRoute: typeof ScanSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/google-business/callback': {
+      id: '/api/public/google-business/callback'
+      path: '/api/public/google-business/callback'
+      fullPath: '/api/public/google-business/callback'
+      preLoaderRoute: typeof ApiPublicGoogleBusinessCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBlogManagerRoute: typeof AuthenticatedBlogManagerRoute
+  AuthenticatedBulkRoute: typeof AuthenticatedBulkRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedLocationsRoute: typeof AuthenticatedLocationsRoute
+  AuthenticatedMessagesRoute: typeof AuthenticatedMessagesRoute
+  AuthenticatedPipelineRoute: typeof AuthenticatedPipelineRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedScansRoute: typeof AuthenticatedScansRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBlogManagerRoute: AuthenticatedBlogManagerRoute,
+  AuthenticatedBulkRoute: AuthenticatedBulkRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedLocationsRoute: AuthenticatedLocationsRoute,
+  AuthenticatedMessagesRoute: AuthenticatedMessagesRoute,
+  AuthenticatedPipelineRoute: AuthenticatedPipelineRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedScansRoute: AuthenticatedScansRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  BlogRoute: BlogRouteWithChildren,
+  ResetPasswordRoute: ResetPasswordRoute,
+  ServicesRoute: ServicesRoute,
+  ScanSlugRoute: ScanSlugRoute,
+  ScanIndexRoute: ScanIndexRoute,
+  ApiPublicGoogleBusinessCallbackRoute: ApiPublicGoogleBusinessCallbackRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

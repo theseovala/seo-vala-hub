@@ -1,0 +1,111 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1789297626577,
+      "tag": "0000_create_cases_and_locations",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1789309104505,
+      "tag": "0001_add_profiles_and_superadmin_roles",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789310452532,
+      "tag": "0002_add_review_workflow_foundation",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1789310879946,
+      "tag": "0003_add_review_identity_and_ai_audit",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789311499863,
+      "tag": "0004_add_durable_bulk_review_queue",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1789311676601,
+      "tag": "0005_add_google_business_connections",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1789312720062,
+      "tag": "0006_claim_google_oauth_state",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1789359061661,
+      "tag": "0007_contact_messages_and_blog_posts",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1789361999909,
+      "tag": "0008_create_scan_exports",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1789362516298,
+      "tag": "0009_scan_exports_case_fk",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1789369475588,
+      "tag": "0010_enable_realtime_dashboard_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1789369593666,
+      "tag": "0011_public_case_status_optin",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1789481656198,
+      "tag": "0012_public_case_detail_reads",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1789493489139,
+      "tag": "0013_add_owner_reply_to_review_cases",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1789728697447,
+      "tag": "0014_seo_vala_apply_imported_schema",
+      "breakpoints": true
+    }
+  ]
+}

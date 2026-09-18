@@ -1,0 +1,22 @@
+{
+  "source": "github:removalwork59-sketch/review-guardian-ai",
+  "target_brand": "SEO Vala",
+  "owner_email": "theseovala@gmail.com",
+  "capabilities": [
+    { "capability": "code", "source": "TanStack Start app (routes, components, server functions)", "outcome": "preserve", "status": "verified", "next_action": "" },
+    { "capability": "branding", "source": "Removal Work / removalwork59@gmail.com / removalwork.online", "outcome": "replace", "status": "verified", "next_action": "" },
+    { "capability": "schema", "source": "drizzle/migrations 0000-0013", "outcome": "preserve", "status": "verified", "next_action": "" },
+    { "capability": "records", "source": "old Lovable Cloud database", "outcome": "exclude", "status": "accepted", "next_action": "Old customer/user data intentionally not migrated per request" },
+    { "capability": "auth_identities", "source": "old Lovable Cloud auth", "outcome": "exclude", "status": "accepted", "next_action": "Fresh auth; email/password + Google enabled on new Cloud" },
+    { "capability": "authorization", "source": "user_roles + has_role (superadmin/admin/user)", "outcome": "preserve", "status": "verified", "next_action": "Grant superadmin role to the SEO Vala owner after first sign-up" },
+    { "capability": "uploaded_files", "source": "none (PDF exports generated on demand)", "outcome": "n/a", "status": "accepted", "next_action": "" },
+    { "capability": "ai", "source": "Lovable AI Gateway (LOVABLE_API_KEY)", "outcome": "preserve", "status": "implemented", "next_action": "Managed key auto-provisioned" },
+    { "capability": "google_maps", "source": "Lovable Google Maps connector (GOOGLE_MAPS_API_KEY)", "outcome": "preserve", "status": "blocked", "next_action": "Link a Google Maps connection to this project" },
+    { "capability": "google_business_oauth", "source": "GOOGLE_BUSINESS_CLIENT_ID / GOOGLE_BUSINESS_CLIENT_SECRET", "outcome": "preserve", "status": "blocked", "next_action": "Owner supplies own Google OAuth client credentials via secure secrets form" },
+    { "capability": "email", "source": "Lovable transactional email (EMAIL_SENDER_DOMAIN / EMAIL_FROM_DOMAIN)", "outcome": "preserve", "status": "blocked", "next_action": "Verify an SEO Vala email domain, then set EMAIL_SENDER_DOMAIN and EMAIL_FROM_DOMAIN" },
+    { "capability": "public_endpoints", "source": "/api/public/google-business/callback", "outcome": "preserve", "status": "implemented", "next_action": "Register new callback URL in the owner's Google OAuth client" },
+    { "capability": "schedules", "source": "none", "outcome": "n/a", "status": "accepted", "next_action": "" },
+    { "capability": "secrets", "source": "old .env / project secrets", "outcome": "exclude", "status": "verified", "next_action": "No old credentials copied; new Cloud keys only" },
+    { "capability": "cutover", "source": "removalwork.online", "outcome": "replace", "status": "pending", "next_action": "Set VITE_APP_URL / publish under an SEO Vala domain" }
+  ]
+}
