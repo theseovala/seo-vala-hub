@@ -45,10 +45,10 @@ export const Route = createFileRoute("/scan/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Case unavailable — Removal Work" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: "Case unavailable — SEO Vala" }, { name: "robots", content: "noindex" }],
       };
     }
-    const title = `${loaderData.headline} — Removal Work case detail`;
+    const title = `${loaderData.headline} — SEO Vala case detail`;
     const description = loaderData.plainSummary.slice(0, 155);
     return {
       meta: [
@@ -88,7 +88,7 @@ function PublicCaseDetailPage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <Link to="/" aria-label="Removal Work home">
+        <Link to="/" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
         <Link to="/scan" className="page-back">

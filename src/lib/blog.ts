@@ -36,7 +36,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "What usually does not qualify",
         paragraphs: [
           "Genuine bad experiences, even described rudely. Pricing disputes. Reviews you simply disagree with. Reporting these wastes your attempt and, more importantly, clogs the process for everyone.",
-          "This is exactly why Removal Work tells you when a review is NOT reportable — a wrong report is worse than no report.",
+          "This is exactly why SEO Vala tells you when a review is NOT reportable — a wrong report is worse than no report.",
         ],
       },
       {
@@ -71,7 +71,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Keep it factual",
         paragraphs: [
-          "Document what you can verify, and be honest about what you cannot. Removal Work's analysis separates evidence from missing evidence deliberately — a report built on guesses fails, and an overstated report can backfire.",
+          "Document what you can verify, and be honest about what you cannot. SEO Vala's analysis separates evidence from missing evidence deliberately — a report built on guesses fails, and an overstated report can backfire.",
         ],
       },
     ],
@@ -99,7 +99,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Track it yourself",
         paragraphs: [
-          "Because Google does not publish outcomes, your own records are the source of truth. In Removal Work you mark the outcome yourself — removed, kept, or pending — so your Reports page always reflects what actually happened, nothing invented.",
+          "Because Google does not publish outcomes, your own records are the source of truth. In SEO Vala you mark the outcome yourself — removed, kept, or pending — so your Reports page always reflects what actually happened, nothing invented.",
         ],
       },
       {

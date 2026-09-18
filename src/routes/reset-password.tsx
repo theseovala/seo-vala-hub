@@ -10,10 +10,10 @@ export const Route = createFileRoute("/reset-password")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Reset password — Removal Work" },
-      { name: "description", content: "Securely choose a new password for your Removal Work account." },
-      { property: "og:title", content: "Reset password — Removal Work" },
-      { property: "og:description", content: "Securely choose a new password for your Removal Work account." },
+      { title: "Reset password — SEO Vala" },
+      { name: "description", content: "Securely choose a new password for your SEO Vala account." },
+      { property: "og:title", content: "Reset password — SEO Vala" },
+      { property: "og:description", content: "Securely choose a new password for your SEO Vala account." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

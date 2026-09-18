@@ -21,12 +21,12 @@ import {
 export const Route = createFileRoute("/_authenticated/pipeline")({
   head: () => ({
     meta: [
-      { title: "Case pipeline — Removal Work" },
+      { title: "Case pipeline — SEO Vala" },
       {
         name: "description",
         content: "Track pending, identified and user-recorded review case stages.",
       },
-      { property: "og:title", content: "Case pipeline — Removal Work" },
+      { property: "og:title", content: "Case pipeline — SEO Vala" },
       {
         property: "og:description",
         content: "Track pending, identified and user-recorded review case stages.",

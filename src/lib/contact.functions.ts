@@ -78,7 +78,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
       return { sent: false as const, reason: "rate_limited" as const };
     }
 
-    const result = await sendTemplateEmail("contact-message", "removalwork59@gmail.com", {
+    const result = await sendTemplateEmail("contact-message", "theseovala@gmail.com", {
       templateData: data,
       idempotencyKey: `contact-${Date.now()}-${data.email}`,
       replyTo: data.email,

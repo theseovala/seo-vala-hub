@@ -14,12 +14,12 @@ export const Route = createFileRoute("/auth")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Sign in — Removal Work" },
+      { title: "Sign in — SEO Vala" },
       {
         name: "description",
         content: "Sign in to keep your review cases, reports and locations in one place.",
       },
-      { property: "og:title", content: "Sign in — Removal Work" },
+      { property: "og:title", content: "Sign in — SEO Vala" },
       {
         property: "og:description",
         content: "Sign in to keep your review cases, reports and locations in one place.",
@@ -167,7 +167,7 @@ function AuthPage() {
   return (
     <main className="auth-page">
       <div className="auth-shell">
-        <section className="auth-story" aria-label="Removal Work product workflow">
+        <section className="auth-story" aria-label="SEO Vala product workflow">
           <Link to="/" className="auth-brand"><Wordmark /></Link>
           <div className="auth-story-copy">
             <span className="auth-kicker"><Sparkles /> AI review intelligence</span>

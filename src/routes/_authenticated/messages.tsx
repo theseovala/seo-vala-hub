@@ -17,9 +17,9 @@ import type { ContactMessage } from "@/lib/contact.functions";
 export const Route = createFileRoute("/_authenticated/messages")({
   head: () => ({
     meta: [
-      { title: "Messages — Removal Work" },
+      { title: "Messages — SEO Vala" },
       { name: "description", content: "Contact form submissions sent from your website." },
-      { property: "og:title", content: "Messages — Removal Work" },
+      { property: "og:title", content: "Messages — SEO Vala" },
       { property: "og:description", content: "Contact form submissions sent from your website." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

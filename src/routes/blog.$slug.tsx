@@ -26,7 +26,7 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData, params }) => ({
     meta: [
-      { title: loaderData ? `${loaderData.title} | Removal Work` : "Blog | Removal Work" },
+      { title: loaderData ? `${loaderData.title} | SEO Vala` : "Blog | SEO Vala" },
       ...(loaderData
         ? [
             { name: "description", content: loaderData.description },
@@ -49,7 +49,7 @@ export const Route = createFileRoute("/blog/$slug")({
               headline: loaderData.title,
               description: loaderData.description,
               datePublished: loaderData.date,
-              author: { "@type": "Organization", name: "Removal Work" },
+              author: { "@type": "Organization", name: "SEO Vala" },
             }),
           },
         ]
@@ -74,7 +74,7 @@ function BlogPost() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <Link to="/" aria-label="Removal Work home">
+        <Link to="/" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
         <Link to="/blog" className="page-back">
@@ -104,7 +104,7 @@ function BlogPost() {
         </div>
       </main>
       <footer className="page-footer">
-        <p>© {new Date().getFullYear()} Removal Work. Not affiliated with Google.</p>
+        <p>© {new Date().getFullYear()} SEO Vala. Not affiliated with Google.</p>
       </footer>
     </div>
   );

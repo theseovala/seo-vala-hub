@@ -105,7 +105,7 @@ export function SiteHeader({
   return (
     <header ref={headerRef} className={`rw-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="rw-header-inner">
-        <Link to="/" className="rw-logo" aria-label="Removal Work home">
+        <Link to="/" className="rw-logo" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
 

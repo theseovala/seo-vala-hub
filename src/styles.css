@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — Removal Work
+ * Design system — SEO Vala
  * Near-black command canvas with violet, cyan and magenta signal lighting.
  * Premium dark-first. All colors in oklch.
  */
@@ -1523,7 +1523,7 @@
 .reference-promise-item p { color: rgba(224, 234, 240, 0.72); line-height: 1.6; font-size: 0.97rem; margin: 0; }
 @media (max-width: 900px) { .reference-promise { grid-template-columns: 1fr; } .reference-promise-left { padding: 2.4rem 1.8rem; } .reference-promise-right { padding: 2rem 1.8rem; } }
 
-/* ===== Removal Work header ===== */
+/* ===== SEO Vala header ===== */
 .brand-v { stroke-dasharray: 34; stroke-dashoffset: 34; animation: rw-draw .9s cubic-bezier(.3,.8,.3,1) .15s forwards; }
 .brand-star { opacity: 0; animation: rw-spark .5s ease-out 1s forwards; }
 @keyframes rw-draw { to { stroke-dashoffset: 0; } }

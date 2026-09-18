@@ -404,7 +404,7 @@ export const updateCaseStatus = createServerFn({ method: "POST" })
             newStatus: STATUS_SHORT[data.status],
             statusNote: data.note ?? saved.statusNote,
             caseId: saved.id,
-            dashboardUrl: `${process.env['VITE_APP_URL'] ?? 'https://removalwork.online'}/scans`,
+            dashboardUrl: `${process.env['VITE_APP_URL'] ?? 'https://id-preview--6595d6d7-248d-4286-b617-1759cf20f66b.lovable.app'}/scans`,
           },
           idempotencyKey: `status-change-${saved.id}-${currentStatus}-${data.status}-${Date.now()}`,
         });

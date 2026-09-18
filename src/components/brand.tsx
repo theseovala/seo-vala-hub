@@ -47,7 +47,7 @@ export function Wordmark() {
     <span className="flex items-center gap-2.5">
       <BrandMark className="size-8" />
       <span className="font-display text-[15px] font-bold tracking-tight text-ink sm:text-base">
-        Removal Work
+        SEO Vala
       </span>
     </span>
   );

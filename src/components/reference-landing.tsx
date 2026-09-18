@@ -15,7 +15,7 @@ import scannerIcon from "@/assets/reference-icons/scanner.png";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
 
-const APPEARANCE_STORAGE_KEY = "removal-work-appearance";
+const APPEARANCE_STORAGE_KEY = "seo-vala-appearance";
 
 const platforms = [
   { name: "Google · Live", glyph: "G", color: "#4285f4" },
@@ -65,15 +65,15 @@ function ContactForm() {
     try {
       const result = await sendContactMessage({ data: { name: name.trim(), email: email.trim(), subject: subject.trim(), message: message.trim() } });
       if (result.sent) {
-        setStatus({ kind: "ok", text: "Message sent. The Removal Work team will reply to your email soon." });
+        setStatus({ kind: "ok", text: "Message sent. The SEO Vala team will reply to your email soon." });
         setName(""); setEmail(""); setSubject(""); setMessage("");
       } else if (result.reason === "rate_limited") {
         setStatus({ kind: "err", text: "Too many messages in a short time. Please try again in a few minutes." });
       } else {
-        setStatus({ kind: "err", text: "Your message could not be delivered right now. Please email us directly at removalwork59@gmail.com." });
+        setStatus({ kind: "err", text: "Your message could not be delivered right now. Please email us directly at theseovala@gmail.com." });
       }
     } catch {
-      setStatus({ kind: "err", text: "Your message could not be delivered right now. Please email us directly at removalwork59@gmail.com." });
+      setStatus({ kind: "err", text: "Your message could not be delivered right now. Please email us directly at theseovala@gmail.com." });
     } finally {
       setBusy(false);
     }
@@ -282,7 +282,7 @@ export function ReferenceLanding({
           </div>
         </section>
 
-        <div className="reference-press" aria-label="Removal Work workflow">
+        <div className="reference-press" aria-label="SEO Vala workflow">
           <div className="reference-press-track">
             {["Real review", "Policy check", "Evidence", "Your decision", "Real review", "Policy check", "Evidence", "Your decision"].map((name, index) => (
               <span key={`${name}-${index}`} className={`press-${name.toLowerCase().split(" ")[0]}`}>{name}</span>
@@ -314,9 +314,9 @@ export function ReferenceLanding({
 
         <section id="about" className="reference-about">
           <div className="reference-about-copy">
-            <h2>About Removal Work</h2>
+            <h2>About SEO Vala</h2>
             <p>
-              Removal Work started with a simple frustration: honest businesses had no structured way to answer
+              SEO Vala started with a simple frustration: honest businesses had no structured way to answer
               reviews that break platform rules. We built a workspace that reads the real review, checks it against
               Google's published policies with AI, prepares the evidence, and keeps a truthful record of every case —
               so decisions stay in the owner's hands.
@@ -341,13 +341,13 @@ export function ReferenceLanding({
         <section id="contact" className="reference-contact">
           <div className="reference-contact-copy">
             <h2>Contact us</h2>
-            <p>Reach out directly. Every message is handled by the Removal Work team.</p>
+            <p>Reach out directly. Every message is handled by the SEO Vala team.</p>
           </div>
           <div className="reference-contact-grid">
-            <a href="mailto:removalwork59@gmail.com" className="reference-contact-card">
+            <a href="mailto:theseovala@gmail.com" className="reference-contact-card">
               <span className="contact-glyph"><Mail className="size-5" /></span>
               <span className="contact-label">Email</span>
-              <span className="contact-value">removalwork59@gmail.com</span>
+              <span className="contact-value">theseovala@gmail.com</span>
             </a>
             <a href="tel:+923448706466" className="reference-contact-card">
               <span className="contact-glyph"><Phone className="size-5" /></span>
@@ -539,7 +539,7 @@ export function ReferenceLanding({
         <footer className="reference-footer">
           <div className="reference-footer-main">
             <div className="reference-footer-brand">
-              <strong>Removal Work</strong>
+              <strong>SEO Vala</strong>
               <p>Policy-led review intelligence for teams that need evidence before action.</p>
             </div>
             <nav aria-label="Footer navigation">
@@ -558,9 +558,9 @@ export function ReferenceLanding({
               </div>
               <div className="reference-footer-contact">
                 <span>Contact</span>
-                <a href="mailto:removalwork59@gmail.com">
+                <a href="mailto:theseovala@gmail.com">
                   <Mail aria-hidden="true" />
-                  <span>removalwork59@gmail.com</span>
+                  <span>theseovala@gmail.com</span>
                 </a>
                 <a href="tel:+923448706466">
                   <Phone aria-hidden="true" />
@@ -578,7 +578,7 @@ export function ReferenceLanding({
             </nav>
           </div>
           <div className="reference-footer-bottom">
-            <p>© {new Date().getFullYear()} Removal Work. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} SEO Vala. All rights reserved.</p>
             <p>Not affiliated with Google. Google determines outcomes; workspace statuses are recorded by the user.</p>
           </div>
         </footer>

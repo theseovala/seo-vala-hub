@@ -16,9 +16,9 @@ import { disconnectGoogleBusiness, getGoogleBusinessConnection, startGoogleBusin
 export const Route = createFileRoute("/_authenticated/locations")({
   head: () => ({
     meta: [
-      { title: "Locations — Removal Work" },
+      { title: "Locations — SEO Vala" },
       { name: "description", content: "The businesses you've scanned and how each one is doing." },
-      { property: "og:title", content: "Locations — Removal Work" },
+      { property: "og:title", content: "Locations — SEO Vala" },
       {
         property: "og:description",
         content: "The businesses you've scanned and how each one is doing.",

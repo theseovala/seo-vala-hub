@@ -8,12 +8,12 @@ import { StatTile } from "@/components/ui/stat-tile";
 export const Route = createFileRoute("/_authenticated/reports")({
   head: () => ({
     meta: [
-      { title: "Reports — Removal Work" },
+      { title: "Reports — SEO Vala" },
       {
         name: "description",
         content: "Track report handoffs and the outcomes you record.",
       },
-      { property: "og:title", content: "Reports — Removal Work" },
+      { property: "og:title", content: "Reports — SEO Vala" },
       {
         property: "og:description",
         content: "Track report handoffs and the outcomes you record.",

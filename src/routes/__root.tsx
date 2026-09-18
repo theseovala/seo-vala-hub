@@ -78,13 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Removal Work — AI Review Policy Intelligence" },
+      { title: "SEO Vala — AI Review Policy Intelligence" },
       {
         name: "description",
         content:
           "Paste a review link and let AI check it against platform policies in plain English.",
       },
-      { property: "og:title", content: "Removal Work — AI Review Policy Intelligence" },
+      { property: "og:title", content: "SEO Vala — AI Review Policy Intelligence" },
       {
         property: "og:description",
         content:

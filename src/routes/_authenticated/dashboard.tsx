@@ -16,9 +16,9 @@ import { listScanExports } from "@/lib/scan-export.functions";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Reviews — Removal Work" },
+      { title: "Reviews — SEO Vala" },
       { name: "description", content: "Every review you've checked, with its result and status." },
-      { property: "og:title", content: "Reviews — Removal Work" },
+      { property: "og:title", content: "Reviews — SEO Vala" },
       {
         property: "og:description",
         content: "Every review you've checked, with its result and status.",

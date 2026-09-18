@@ -48,13 +48,13 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Removal Work — AI Review Policy Intelligence" },
+      { title: "SEO Vala — AI Review Policy Intelligence" },
       {
         name: "description",
         content:
           "Paste a Google review link and let AI check it against platform policies, weigh the evidence and prepare the strongest legitimate report.",
       },
-      { property: "og:title", content: "Removal Work — AI Review Policy Intelligence" },
+      { property: "og:title", content: "SEO Vala — AI Review Policy Intelligence" },
       {
         property: "og:description",
         content:
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Removal Work — AI Review Policy Intelligence" },
+      { name: "twitter:title", content: "SEO Vala — AI Review Policy Intelligence" },
       {
         name: "twitter:description",
         content:

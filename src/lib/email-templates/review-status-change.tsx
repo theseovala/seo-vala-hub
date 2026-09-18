@@ -48,7 +48,7 @@ function ReviewStatusChangeEmail({
   const replySubject = encodeURIComponent(
     `Re: Review status update for ${businessName}${caseId ? ` (case ${caseId.slice(0, 8)})` : ''}`
   )
-  const replyLink = `mailto:removalwork59@gmail.com?subject=${replySubject}`
+  const replyLink = `mailto:theseovala@gmail.com?subject=${replySubject}`
 
   return (
     <Html lang="en" dir="ltr">
@@ -104,12 +104,12 @@ function ReviewStatusChangeEmail({
               </Button>
             ) : null}
             <Button href={replyLink} style={styles.secondaryButton}>
-              Reply to Removal Work
+              Reply to SEO Vala
             </Button>
           </Section>
 
           <Text style={styles.footer}>
-            This is an automated update from Removal Work. If you did not make this change,
+            This is an automated update from SEO Vala. If you did not make this change,
             reply to this email and we will investigate.
           </Text>
         </Container>
@@ -202,6 +202,6 @@ export const template = {
     newStatus: 'reported',
     statusNote: 'User marked as submitted to Google.',
     caseId: '00000000-0000-0000-0000-000000000000',
-    dashboardUrl: 'https://removalwork.online/scans',
+    dashboardUrl: 'https://id-preview--6595d6d7-248d-4286-b617-1759cf20f66b.lovable.app/scans',
   },
 } satisfies TemplateEntry

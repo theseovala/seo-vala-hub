@@ -13,9 +13,9 @@ import type { DbBlogPost } from "@/lib/blog.functions";
 export const Route = createFileRoute("/_authenticated/blog-manager")({
   head: () => ({
     meta: [
-      { title: "Blog manager — Removal Work" },
+      { title: "Blog manager — SEO Vala" },
       { name: "description", content: "Write, edit, publish and delete your blog posts." },
-      { property: "og:title", content: "Blog manager — Removal Work" },
+      { property: "og:title", content: "Blog manager — SEO Vala" },
       { property: "og:description", content: "Write, edit, publish and delete your blog posts." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

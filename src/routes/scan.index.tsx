@@ -27,13 +27,13 @@ export const Route = createFileRoute("/scan/")({
   ),
   head: () => ({
     meta: [
-      { title: "Public review status board — Removal Work" },
+      { title: "Public review status board — SEO Vala" },
       {
         name: "description",
         content:
           "Owner-published progress for review policy cases: prepared, submitted, awaiting outcome, and the confirmed result.",
       },
-      { property: "og:title", content: "Public review status board — Removal Work" },
+      { property: "og:title", content: "Public review status board — SEO Vala" },
       {
         property: "og:description",
         content: "Owner-published progress for review policy cases, with honest outcome tracking.",
@@ -53,7 +53,7 @@ function PublicStatusPage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <Link to="/" aria-label="Removal Work home">
+        <Link to="/" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
         <Link to="/" className="page-back">

@@ -6,13 +6,13 @@ import { Wordmark } from "@/components/brand";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Review Scanning, Evidence & Tracking | Removal Work" },
+      { title: "Services — Review Scanning, Evidence & Tracking | SEO Vala" },
       {
         name: "description",
         content:
-          "Removal Work services: AI review policy scanning for Google reviews, evidence-based report preparation, and honest case and outcome tracking.",
+          "SEO Vala services: AI review policy scanning for Google reviews, evidence-based report preparation, and honest case and outcome tracking.",
       },
-      { property: "og:title", content: "Services — Review Scanning, Evidence & Tracking | Removal Work" },
+      { property: "og:title", content: "Services — Review Scanning, Evidence & Tracking | SEO Vala" },
       {
         property: "og:description",
         content:
@@ -58,7 +58,7 @@ function ServicesPage() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <Link to="/" aria-label="Removal Work home">
+        <Link to="/" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
         <Link to="/" className="page-back">
@@ -67,7 +67,7 @@ function ServicesPage() {
       </header>
       <main className="page-main">
         <p className="page-eyebrow">Services</p>
-        <h1 className="page-title">What Removal Work does</h1>
+        <h1 className="page-title">What SEO Vala does</h1>
         <p className="page-lede">
           Policy-led review intelligence: we only prepare a report when a review genuinely breaks the rules —
           and we say so when it doesn&apos;t.
@@ -90,7 +90,7 @@ function ServicesPage() {
         </div>
       </main>
       <footer className="page-footer">
-        <p>© {new Date().getFullYear()} Removal Work. Not affiliated with Google.</p>
+        <p>© {new Date().getFullYear()} SEO Vala. Not affiliated with Google.</p>
       </footer>
     </div>
   );

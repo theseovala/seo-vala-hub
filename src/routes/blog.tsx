@@ -24,13 +24,13 @@ export const Route = createFileRoute("/blog")({
   ),
   head: () => ({
     meta: [
-      { title: "Blog — Review Policy Guides | Removal Work" },
+      { title: "Blog — Review Policy Guides | SEO Vala" },
       {
         name: "description",
         content:
           "Practical guides on Google review policy: what counts as a violation, what evidence strengthens a report, and what happens after you report.",
       },
-      { property: "og:title", content: "Blog — Review Policy Guides | Removal Work" },
+      { property: "og:title", content: "Blog — Review Policy Guides | SEO Vala" },
       {
         property: "og:description",
         content:
@@ -50,7 +50,7 @@ function BlogIndex() {
   return (
     <div className="page-shell">
       <header className="page-header">
-        <Link to="/" aria-label="Removal Work home">
+        <Link to="/" aria-label="SEO Vala home">
           <Wordmark />
         </Link>
         <Link to="/" className="page-back">
@@ -103,7 +103,7 @@ function BlogIndex() {
         </div>
       </main>
       <footer className="page-footer">
-        <p>© {new Date().getFullYear()} Removal Work. Not affiliated with Google.</p>
+        <p>© {new Date().getFullYear()} SEO Vala. Not affiliated with Google.</p>
       </footer>
     </div>
   );

@@ -20,7 +20,7 @@ const Email = ({ name, businessName, reviewerName, verdictLabel, confidence, hea
         <Text style={text}>{name ? `Hi ${name},` : 'Hi there,'}</Text>
         <Text style={text}>
           Your review scan has finished and the full AI policy report is now available in your
-          Removal Work dashboard.
+          SEO Vala dashboard.
         </Text>
         <Container style={card}>
           <Text style={row}><strong>Business:</strong> {businessName ?? 'Unknown'}</Text>
@@ -33,7 +33,7 @@ const Email = ({ name, businessName, reviewerName, verdictLabel, confidence, hea
         </Container>
         <Text style={muted}>
           Open your dashboard to read the evidence, counter-evidence and recommended action. This
-          report is an AI policy assessment — Removal Work never submits a report or changes a
+          report is an AI policy assessment — SEO Vala never submits a report or changes a
           review without your confirmation.
         </Text>
       </Container>

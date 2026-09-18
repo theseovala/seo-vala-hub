@@ -21,12 +21,12 @@ import {
 export const Route = createFileRoute("/_authenticated/scans")({
   head: () => ({
     meta: [
-      { title: "Scan reports — Removal Work" },
+      { title: "Scan reports — SEO Vala" },
       {
         name: "description",
         content: "Full AI policy scan reports for every review you've checked.",
       },
-      { property: "og:title", content: "Scan reports — Removal Work" },
+      { property: "og:title", content: "Scan reports — SEO Vala" },
       {
         property: "og:description",
         content: "Full AI policy scan reports for every review you've checked.",

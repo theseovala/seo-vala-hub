@@ -31,7 +31,7 @@ function ContactMessageEmail({
       <Body style={styles.body}>
         <Container style={styles.container}>
           <Heading style={styles.heading}>New contact message</Heading>
-          <Text style={styles.meta}>Removal Work website contact form</Text>
+          <Text style={styles.meta}>SEO Vala website contact form</Text>
           <Hr style={styles.hr} />
           <Section>
             <Text style={styles.label}>Name</Text>
@@ -45,7 +45,7 @@ function ContactMessageEmail({
           </Section>
           <Hr style={styles.hr} />
           <Text style={styles.footer}>
-            Sent from the Removal Work contact form. Reply directly to this email to
+            Sent from the SEO Vala contact form. Reply directly to this email to
             respond to the sender.
           </Text>
         </Container>
@@ -96,5 +96,5 @@ export const template = {
     subject: 'Review removal inquiry',
     message: 'Hi, I would like help with a review on my business listing.',
   },
-  to: 'removalwork59@gmail.com',
+  to: 'theseovala@gmail.com',
 } satisfies TemplateEntry

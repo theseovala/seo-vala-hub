@@ -73,7 +73,7 @@ async function buildScanReportPdf(item: CaseRecord) {
   const black = rgb(0, 0, 0);
 
   // Header
-  page.drawText("Removal Work — Scan Report", {
+  page.drawText("SEO Vala — Scan Report", {
     x: margin,
     y,
     size: 22,
@@ -233,7 +233,7 @@ async function buildScanReportPdf(item: CaseRecord) {
 
   // Footer
   page.drawText(
-    "This report is an AI policy assessment. Removal Work never submits reports without your confirmation.",
+    "This report is an AI policy assessment. SEO Vala never submits reports without your confirmation.",
     {
       x: margin,
       y: 40,
@@ -262,7 +262,7 @@ export const exportScanReport = createServerFn({ method: "POST" })
 
     const item = toCase(row);
     const pdfBytes = await buildScanReportPdf(item);
-    const fileName = `removal-work-scan-${item.locationName.replace(/\s+/g, "-").toLowerCase().slice(0, 40)}-${new Date().toISOString().slice(0, 10)}.pdf`;
+    const fileName = `seo-vala-scan-${item.locationName.replace(/\s+/g, "-").toLowerCase().slice(0, 40)}-${new Date().toISOString().slice(0, 10)}.pdf`;
 
     const { error: insertError } = await context.supabase.from("scan_exports").insert({
       user_id: context.userId,

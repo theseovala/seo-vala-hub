@@ -17,9 +17,9 @@ import {
 
 export const Route = createFileRoute("/_authenticated/bulk")({
   head: () => ({ meta: [
-    { title: "Bulk review discovery — Removal Work" },
+    { title: "Bulk review discovery — SEO Vala" },
     { name: "description", content: "Queue real Google review links for verified discovery and policy analysis." },
-    { property: "og:title", content: "Bulk review discovery — Removal Work" },
+    { property: "og:title", content: "Bulk review discovery — SEO Vala" },
     { property: "og:description", content: "Queue real Google review links for verified discovery and policy analysis." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
@@ -96,7 +96,7 @@ function BulkPage() {
         {job.items.map((item) => <div key={item.id} className="surface bulk-result-row grid grid-cols-[auto_minmax(0,1fr)_auto] items-start gap-3 p-4"><StateIcon status={item.status} /><div className="min-w-0"><p className="truncate text-sm font-medium text-ink">{item.businessName ?? item.sourceUrl}</p><p className="mt-0.5 text-sm text-muted-foreground">{item.detail}</p></div><span className="text-xs font-medium text-muted-foreground">{labelStatus(item.status)}</span></div>)}
       </div> : null}
 
-      <p className="mt-6 text-sm text-muted-foreground">Business links can be discovered, but a review is analyzed only when Google returns one exact identity match. Removal Work never guesses which review you meant.</p>
+      <p className="mt-6 text-sm text-muted-foreground">Business links can be discovered, but a review is analyzed only when Google returns one exact identity match. SEO Vala never guesses which review you meant.</p>
     </AppShell>
   );
 }
