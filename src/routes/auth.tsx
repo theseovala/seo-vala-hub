@@ -1,0 +1,235 @@
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { ArrowRight, Bot, CheckCircle2, FileCheck2, ScanSearch, Sparkles } from "lucide-react";
+
+import { Wordmark } from "@/components/brand";
+import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
+import "@lovable.dev/cloud-auth-js/styles.css";
+
+export const Route = createFileRoute("/auth")({
+  // The sign-in screen reads the browser session before it can render anything
+  // meaningful, so rendering it on the server only produced a hydration mismatch.
+  ssr: false,
+  head: () => ({
+    meta: [
+      { title: "Sign in — Removal Work" },
+      {
+        name: "description",
+        content: "Sign in to keep your review cases, reports and locations in one place.",
+      },
+      { property: "og:title", content: "Sign in — Removal Work" },
+      {
+        property: "og:description",
+        content: "Sign in to keep your review cases, reports and locations in one place.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/auth" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/auth" }],
+  }),
+  component: AuthPage,
+});
+
+function AuthPage() {
+  const navigate = useNavigate();
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [googleBusy, setGoogleBusy] = useState(false);
+  const [recoveryBusy, setRecoveryBusy] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [message, setMessage] = useState<{ tone: "error" | "ok"; text: string } | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    supabase.auth.getUser().then(({ data }) => {
+      if (!active) return;
+      if (data.user) {
+        void navigate({ to: "/dashboard", replace: true });
+        return;
+      }
+      setReady(true);
+    }).catch(() => {
+      if (active) setReady(true);
+    });
+    return () => {
+      active = false;
+    };
+  }, [navigate]);
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    if (busy || googleBusy || recoveryBusy) return;
+    setBusy(true);
+    setMessage(null);
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (mode === "signup") {
+      const { data, error } = await supabase.auth.signUp({
+        email: normalizedEmail,
+        password,
+        options: { emailRedirectTo: window.location.origin },
+      });
+      setBusy(false);
+      if (error) return setMessage({ tone: "error", text: error.message });
+      if (!data.session) {
+        return setMessage({
+          tone: "ok",
+          text: "Check your inbox and click the link to finish creating your account.",
+        });
+      }
+      await supabase.rpc("ensure_my_profile");
+      void navigate({ to: "/dashboard" });
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: normalizedEmail,
+        password,
+      });
+      if (error || !data.session) {
+        setMessage({
+          tone: "error",
+          text: error?.message === "Invalid login credentials"
+            ? "The email or password is incorrect. Check both and try again."
+            : error?.message ?? "Sign-in did not complete. Please try again.",
+        });
+        return;
+      }
+
+      const { data: verified, error: verificationError } = await supabase.auth.getUser();
+      if (verificationError || !verified.user) {
+        await supabase.auth.signOut({ scope: "local" });
+        setMessage({ tone: "error", text: "Your secure session could not be verified. Please sign in again." });
+        return;
+      }
+
+      const { error: profileError } = await supabase.rpc("ensure_my_profile");
+      if (profileError) {
+        setMessage({ tone: "error", text: "You are signed in, but the workspace could not finish loading. Please try again." });
+        return;
+      }
+
+      await navigate({ to: "/dashboard", replace: true });
+    } catch {
+      setMessage({ tone: "error", text: "Sign-in could not connect. Check your connection and try again." });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function handleGoogle() {
+    if (googleBusy || busy || recoveryBusy) return;
+    setMessage(null);
+    setGoogleBusy(true);
+    try {
+      const result = await lovable.auth.signInWithOAuth("google", {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) {
+        setMessage({ tone: "error", text: "Google sign-in didn't complete. Please try again." });
+        return;
+      }
+      if (result.redirected) return;
+      await supabase.rpc("ensure_my_profile");
+      void navigate({ to: "/dashboard" });
+    } finally {
+      setGoogleBusy(false);
+    }
+  }
+
+  async function handlePasswordRecovery() {
+    if (recoveryBusy || busy || googleBusy) return;
+    setMessage(null);
+    const normalizedEmail = email.trim();
+    if (!normalizedEmail) {
+      setMessage({ tone: "error", text: "Enter your email address first." });
+      return;
+    }
+    setRecoveryBusy(true);
+    const { error } = await supabase.auth.resetPasswordForEmail(normalizedEmail, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    setRecoveryBusy(false);
+    setMessage(
+      error
+        ? { tone: "error", text: "We couldn't send the reset email. Please try again." }
+        : { tone: "ok", text: "If that account exists, a password reset link is on its way." },
+    );
+  }
+
+  return (
+    <main className="auth-page">
+      <div className="auth-shell">
+        <section className="auth-story" aria-label="Removal Work product workflow">
+          <Link to="/" className="auth-brand"><Wordmark /></Link>
+          <div className="auth-story-copy">
+            <span className="auth-kicker"><Sparkles /> AI review intelligence</span>
+            <h1>Turn review policy into clear action.</h1>
+            <p>Scan the real review, understand the evidence, prepare the report and track the outcome.</p>
+          </div>
+          <div className="auth-slider" aria-hidden="true">
+            <article className="auth-slide auth-slide-scan">
+              <span><ScanSearch /></span><div><b>Review detected</b><small>Reading source and business context</small></div>
+              <i className="auth-scan-beam" />
+            </article>
+            <article className="auth-slide auth-slide-policy">
+              <span><Bot /></span><div><b>Policy evidence</b><small>AI weighs evidence and counter-evidence</small></div>
+              <em>Analyzing</em>
+            </article>
+            <article className="auth-slide auth-slide-report">
+              <span><FileCheck2 /></span><div><b>Case ready</b><small>Legitimate action with honest status</small></div>
+              <CheckCircle2 />
+            </article>
+          </div>
+          <p className="auth-story-note">Real scans. Real AI analysis. No guaranteed removals.</p>
+        </section>
+
+        <section className="auth-form-side">
+          <Link to="/" className="auth-mobile-brand"><Wordmark /></Link>
+          <div className="auth-form-card">
+            <span className="auth-form-light" aria-hidden="true" />
+            <div className="auth-form-heading" aria-live="polite">
+              <span>{mode === "signin" ? "Secure workspace access" : "Create your workspace"}</span>
+              <h2>{mode === "signin" ? "Welcome back" : "Create your account"}</h2>
+              <p>{mode === "signin" ? "Your scans, reports and locations stay together." : "Create an account only if your access has been approved."}</p>
+            </div>
+
+            <Button type="button" variant="outline" onClick={handleGoogle} disabled={googleBusy || busy} className="auth-google">
+              <span className="auth-google-g">G</span> {googleBusy ? "Connecting…" : "Continue with Google"}
+            </Button>
+
+            <div className="auth-divider"><span />or use email<span /></div>
+
+            <form onSubmit={handleSubmit} className="auth-fields">
+              <label htmlFor="email">Email address</label>
+               <input id="email" type="email" required autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@company.com" disabled={busy || googleBusy || recoveryBusy} />
+              <label htmlFor="password">Password</label>
+               <input id="password" type="password" required minLength={6} autoComplete={mode === "signin" ? "current-password" : "new-password"} value={password} onChange={(event) => setPassword(event.target.value)} placeholder="At least 6 characters" disabled={busy || googleBusy || recoveryBusy} />
+              {mode === "signin" ? (
+                <Button type="button" variant="ghost" disabled={recoveryBusy || busy} onClick={handlePasswordRecovery} className="auth-recovery">
+                  {recoveryBusy ? "Sending reset link…" : "Forgot password?"}
+                </Button>
+              ) : null}
+              <Button type="submit" disabled={busy || !ready} className="auth-submit">
+                {busy || !ready ? "Please wait…" : mode === "signin" ? "Sign in" : "Create approved account"}<ArrowRight />
+              </Button>
+            </form>
+
+            {message ? <p role="status" className={`auth-message ${message.tone === "error" ? "is-error" : "is-ok"}`}>{message.text}</p> : null}
+
+            <Button type="button" variant="ghost" disabled={busy || googleBusy || recoveryBusy} onClick={() => { setMode(mode === "signin" ? "signup" : "signin"); setMessage(null); }} className="auth-mode">
+              {mode === "signin" ? "Approved access? Create an account" : "Already have an account? Sign in"}
+            </Button>
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
