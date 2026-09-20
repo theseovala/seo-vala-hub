@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { ExternalLink, Link2, Loader2, MapPin, RefreshCw, Unlink } from "lucide-react";
@@ -114,6 +114,11 @@ function LocationsPage() {
             {connectionBusy ? <Loader2 className="animate-spin" /> : <Link2 />} Connect Google
           </Button>
         )}
+      </section>
+      <section className="mb-6 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-sm leading-relaxed text-muted-foreground">
+        <p className="font-semibold text-ink">Google Business Profile data</p>
+        <p className="mt-2">You control this connection. SEO Vala requests access only after you authorize Google OAuth for businesses you manage. We never ask for your Google password, and you can disconnect this account here or revoke access in Google. Google independently controls API access, review policies, and outcomes.</p>
+        <p className="mt-2">See our <Link to="/privacy" className="font-semibold text-primary underline underline-offset-4">Privacy Policy</Link> and <Link to="/terms" className="font-semibold text-primary underline underline-offset-4">Terms</Link> for data use, retention, and deletion requests.</p>
       </section>
       {isPending ? (
         <EmptyState title="Loading your locations…" body="One moment." />

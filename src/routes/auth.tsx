@@ -227,6 +227,9 @@ function AuthPage() {
             <Button type="button" variant="ghost" disabled={busy || googleBusy || recoveryBusy} onClick={() => { setMode(mode === "signin" ? "signup" : "signin"); setMessage(null); }} className="auth-mode">
               {mode === "signin" ? "Approved access? Create an account" : "Already have an account? Sign in"}
             </Button>
+            <p className="mt-4 text-center text-xs leading-relaxed text-muted-foreground">
+              By continuing, you agree to our <Link to="/terms" className="underline underline-offset-4 hover:text-ink">Terms</Link> and acknowledge our <Link to="/privacy" className="underline underline-offset-4 hover:text-ink">Privacy Policy</Link>. Google sign-in is optional and handled by Google OAuth; we never receive your Google password.
+            </p>
           </div>
         </section>
       </div>

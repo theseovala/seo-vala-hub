@@ -98,6 +98,11 @@ export function assertAllowedOrigin(origin: string) {
   const url = new URL(origin);
   const local = url.hostname === "localhost" || url.hostname === "127.0.0.1";
   if (url.protocol !== "https:" && !local) throw new Error("Google connection requires HTTPS.");
-  if (!local && !url.hostname.endsWith(".lovable.app")) throw new Error("This origin is not allowed.");
+  const configuredAppUrl = process.env["VITE_APP_URL"];
+  const configuredOrigin = configuredAppUrl ? new URL(configuredAppUrl).origin : null;
+  const isConfiguredProductionOrigin = configuredOrigin === url.origin;
+  if (!local && !isConfiguredProductionOrigin && !url.hostname.endsWith(".lovable.app")) {
+    throw new Error("This origin is not allowed.");
+  }
   return url.origin;
 }

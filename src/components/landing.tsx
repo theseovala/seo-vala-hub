@@ -531,7 +531,7 @@ export function ClosingSection() {
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border pt-14 pb-10">
-      <div className="mx-auto grid max-w-6xl gap-10 px-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-3 sm:grid-cols-2 lg:grid-cols-5">
         <div>
           <Wordmark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -555,6 +555,13 @@ export function SiteFooter() {
             { label: "Reports", to: "/reports" },
             { label: "Locations", to: "/locations" },
             { label: "Bulk scan", to: "/bulk" },
+          ]}
+        />
+        <FooterCol
+          title="Legal"
+          links={[
+            { label: "Privacy Policy", to: "/privacy" },
+            { label: "Terms & Conditions", to: "/terms" },
           ]}
         />
         <div>
