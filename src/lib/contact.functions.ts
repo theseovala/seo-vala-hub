@@ -67,7 +67,7 @@ async function assertAdmin(context: { supabase: any; userId: string }) {
 }
 
 export const sendContactMessage = createServerFn({ method: "POST" })
-  .inputValidator((data) => contactSchema.parse(data))
+  .validator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
     const headers = getRequestHeaders();
     const ip =
@@ -117,7 +117,7 @@ export const listContactMessages = createServerFn({ method: "POST" })
 
 export const updateContactMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     z
       .object({
         id: z.string().uuid(),
@@ -143,7 +143,7 @@ export const updateContactMessage = createServerFn({ method: "POST" })
 
 export const deleteContactMessage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
+  .validator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     await assertAdmin(context as any);
     const { error } = await context.supabase.from("contact_messages").delete().eq("id", data.id);

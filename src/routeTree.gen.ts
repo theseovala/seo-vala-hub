@@ -23,6 +23,7 @@ import { Route as AuthenticatedMessagesRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedPipelineRouteImport } from './routes/_authenticated/pipeline'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedScansRouteImport } from './routes/_authenticated/scans'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as ScanIndexRouteImport } from './routes/scan.index'
 import { Route as ScanSlugRouteImport } from './routes/scan.$slug'
@@ -99,6 +100,11 @@ const AuthenticatedScansRoute = AuthenticatedScansRouteImport.update({
   path: '/scans',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/pipeline': typeof AuthenticatedPipelineRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/scans': typeof AuthenticatedScansRoute
+  '/api/health': typeof ApiHealthRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/scan/$slug': typeof ScanSlugRoute
   '/scan/': typeof ScanIndexRoute
@@ -161,6 +168,7 @@ export interface FileRoutesByTo {
   '/pipeline': typeof AuthenticatedPipelineRoute
   '/reports': typeof AuthenticatedReportsRoute
   '/scans': typeof AuthenticatedScansRoute
+  '/api/health': typeof ApiHealthRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/scan/$slug': typeof ScanSlugRoute
   '/scan': typeof ScanIndexRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/_authenticated/pipeline': typeof AuthenticatedPipelineRoute
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
   '/_authenticated/scans': typeof AuthenticatedScansRoute
+  '/api/health': typeof ApiHealthRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/scan/$slug': typeof ScanSlugRoute
   '/scan/': typeof ScanIndexRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/pipeline'
     | '/reports'
     | '/scans'
+    | '/api/health'
     | '/blog/$slug'
     | '/scan/$slug'
     | '/scan/'
@@ -225,6 +235,7 @@ export interface FileRouteTypes {
     | '/pipeline'
     | '/reports'
     | '/scans'
+    | '/api/health'
     | '/blog/$slug'
     | '/scan/$slug'
     | '/scan'
@@ -246,6 +257,7 @@ export interface FileRouteTypes {
     | '/_authenticated/pipeline'
     | '/_authenticated/reports'
     | '/_authenticated/scans'
+    | '/api/health'
     | '/blog/$slug'
     | '/scan/$slug'
     | '/scan/'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRouteWithChildren
   ResetPasswordRoute: typeof ResetPasswordRoute
   ServicesRoute: typeof ServicesRoute
+  ApiHealthRoute: typeof ApiHealthRoute
   ScanSlugRoute: typeof ScanSlugRoute
   ScanIndexRoute: typeof ScanIndexRoute
   ApiPublicGoogleBusinessCallbackRoute: typeof ApiPublicGoogleBusinessCallbackRoute
@@ -366,6 +379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedScansRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/$slug'
@@ -446,6 +466,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRouteWithChildren,
   ResetPasswordRoute: ResetPasswordRoute,
   ServicesRoute: ServicesRoute,
+  ApiHealthRoute: ApiHealthRoute,
   ScanSlugRoute: ScanSlugRoute,
   ScanIndexRoute: ScanIndexRoute,
   ApiPublicGoogleBusinessCallbackRoute: ApiPublicGoogleBusinessCallbackRoute,

@@ -93,7 +93,7 @@ export const listMyPosts = createServerFn({ method: "POST" })
 
 export const createPost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => postInput.parse(input))
+  .validator((input: unknown) => postInput.parse(input))
   .handler(async ({ data, context }): Promise<DbBlogPost> => {
     const slug = slugify(data.slug || data.title) || `post-${Date.now()}`;
     const { data: row, error } = await context.supabase
@@ -117,7 +117,7 @@ export const createPost = createServerFn({ method: "POST" })
 
 export const updatePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     postInput.partial().extend({ id: z.string().uuid() }).parse(input),
   )
   .handler(async ({ data, context }): Promise<DbBlogPost> => {
@@ -146,7 +146,7 @@ export const updatePost = createServerFn({ method: "POST" })
 
 export const deletePost = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
+  .validator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }) => {
     const { error } = await context.supabase
       .from("blog_posts")

@@ -56,7 +56,7 @@ function toFailure(error: unknown): ScanFailure {
 }
 
 export const scanReviewUrl = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => z.object({ url: z.string().min(4) }).parse(input))
+  .validator((input: unknown) => z.object({ url: z.string().min(4) }).parse(input))
   .handler(async ({ data }): Promise<ScanSuccess | ScanFailure> => {
     const platform = detectPlatform(data.url);
     const info = PLATFORMS[platform];
@@ -86,7 +86,7 @@ export const scanReviewUrl = createServerFn({ method: "POST" })
 export type AnalysisSuccess = { ok: true; analysis: ReviewAnalysis };
 
 export const analyzeReviewForPolicy = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     z.object({ business: businessSchema, review: reviewSchema }).parse(input),
   )
   .handler(async ({ data }): Promise<AnalysisSuccess | ScanFailure> => {

@@ -33,7 +33,7 @@ export const getGoogleBusinessConnection = createServerFn({ method: "POST" })
 
 export const startGoogleBusinessConnection = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ origin: z.string().url() }).parse(input))
+  .validator((input: unknown) => z.object({ origin: z.string().url() }).parse(input))
   .handler(async ({ data, context }) => {
     const { assertAllowedOrigin, createGoogleAuthorization, encryptSecret, hashValue } = await import("./google-business.server");
     const origin = assertAllowedOrigin(data.origin);

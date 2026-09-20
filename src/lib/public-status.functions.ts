@@ -102,7 +102,7 @@ export type PublicCaseDetail = PublicCaseStatus & {
 
 /** Public detail for one owner-published case. Returns null when not published. */
 export const getPublicCaseDetail = createServerFn({ method: "GET" })
-  .inputValidator((input: unknown) => z.object({ slug: z.string().min(1) }).parse(input))
+  .validator((input: unknown) => z.object({ slug: z.string().min(1) }).parse(input))
   .handler(async ({ data }): Promise<PublicCaseDetail | null> => {
     const supabasePublic = createPublicClient();
 
@@ -152,7 +152,7 @@ export const getPublicCaseDetail = createServerFn({ method: "GET" })
 /** Tells the signed-in visitor whether they own this case (and may reply). */
 export const getMyCaseReplyAccess = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
+  .validator((input: unknown) => z.object({ id: z.string().uuid() }).parse(input))
   .handler(async ({ data, context }): Promise<{ isOwner: boolean }> => {
     const { data: row, error } = await context.supabase
       .from("review_cases")
@@ -167,7 +167,7 @@ export const getMyCaseReplyAccess = createServerFn({ method: "POST" })
 /** Owner's public reply to the review, shown on the published case page. */
 export const setCaseOwnerReply = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     z.object({ id: z.string().uuid(), reply: z.string().max(2000) }).parse(input),
   )
   .handler(async ({ data, context }) => {
@@ -187,7 +187,7 @@ export const setCaseOwnerReply = createServerFn({ method: "POST" })
 /** Owner opt-in: publish or unpublish a case's status on the public page. */
 export const setCasePublicStatus = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     z.object({ id: z.string().uuid(), isPublic: z.boolean() }).parse(input),
   )
   .handler(async ({ data, context }) => {

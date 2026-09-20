@@ -90,7 +90,7 @@ async function readOwnedJob(supabase: any, userId: string, jobId: string) {
 
 export const createBulkJob = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => z.object({ text: z.string().min(4), sourceKind: z.enum(["review", "competitor"]).default("competitor") }).parse(input))
+  .validator((input: unknown) => z.object({ text: z.string().min(4), sourceKind: z.enum(["review", "competitor"]).default("competitor") }).parse(input))
   .handler(async ({ data, context }): Promise<BulkJob> => {
     const parsed = parseUrlList(data.text).filter((item) => item.valid);
     const unique = [...new Map(parsed.map((item) => [canonicalize(item.url), item.url.trim()])).entries()]
@@ -120,7 +120,7 @@ export const createBulkJob = createServerFn({ method: "POST" })
 
 export const getBulkJob = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => jobIdSchema.parse(input))
+  .validator((input: unknown) => jobIdSchema.parse(input))
   .handler(async ({ data, context }): Promise<BulkJob> =>
     readOwnedJob(context.supabase, context.userId, data.jobId));
 
@@ -139,7 +139,7 @@ export const getLatestBulkJob = createServerFn({ method: "POST" })
 
 export const runBulkJobPass = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => jobIdSchema.parse(input))
+  .validator((input: unknown) => jobIdSchema.parse(input))
   .handler(async ({ data, context }): Promise<BulkJob> => {
     const { data: owned } = await context.supabase
       .from("bulk_jobs")

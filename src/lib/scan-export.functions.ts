@@ -248,7 +248,7 @@ async function buildScanReportPdf(item: CaseRecord) {
 
 export const exportScanReport = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) =>
+  .validator((input: unknown) =>
     z.object({ id: z.string().uuid() }).parse(input),
   )
   .handler(async ({ data, context }) => {

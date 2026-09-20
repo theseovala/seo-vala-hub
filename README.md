@@ -13,9 +13,15 @@ bun install
 bun run dev
 ```
 
+Health check endpoint:
+
+```sh
+curl http://localhost:3000/api/health
+```
+
 ## Configuration
 
-All credentials are supplied through project secrets / environment variables — nothing is hardcoded.
+All credentials are supplied through project secrets / environment variables — nothing is hardcoded. Keep a local `.env` file for development, but do not commit real secrets. Use `.env.example` as the template.
 
 | Variable | Purpose |
 | --- | --- |
