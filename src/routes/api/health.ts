@@ -14,7 +14,7 @@ export const Route = createFileRoute("/api/health")({
           ok: true,
           service: "seo-vala-hub",
           status: missingEnv.length === 0 ? "ready" : "configuration_missing",
-          environment: process.env.NODE_ENV ?? "development",
+          environment: process.env["NODE_ENV"] ?? "development",
           appUrl,
           timestamp: new Date().toISOString(),
           missingEnv: missingEnv.length > 0 ? missingEnv : undefined,
